@@ -39,7 +39,7 @@ var App = connect(mapStateToProps)(App)
 
 ### What about ImmutableJS?
 
-Sure, you could use a full-blown immutable library. Downsides: you have to use its APIs, not familiar JS objects and arrays.
+Sure, you could use a full-blown immutable library. Downsides: you have to use its APIs, which are often awkward.
 
 ### What about speed?
 
