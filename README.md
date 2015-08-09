@@ -5,10 +5,6 @@
 
 Ice Dam: a very lightweight library to freeze data. Data is frozen at the __edge__, where your Flux container sends it to views.
 
-### What's it do?
-
-Freezes Flux data, so React components can't change it - accidentally or otherwise :)
-
 ### Why?
 
 To prevent accidental mutation and bugs.
