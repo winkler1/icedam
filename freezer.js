@@ -6,7 +6,9 @@ function deepFreeze(obj) {
 
   propNames.forEach(function (name) {
     var prop = obj[name];
-    if (typeof prop == 'object' && !Object.isFrozen(prop))
+    if (typeof prop !== 'null'
+        && (typeof prop === 'object' || typeof prop === 'function')
+        && !Object.isFrozen(prop))
       deepFreeze(prop);
   });
   Object.freeze(obj);
