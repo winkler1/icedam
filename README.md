@@ -5,6 +5,8 @@ Friends don't let friends mutate.
  
 ![](IceDam.gif)
 
+![Screencast](https://www.youtube.com/watch?v=fPA_u4_iyK8)
+
 ### What's This?
 
 Ice Dam: a very lightweight library to freeze data. Data is frozen at the __edge__, where your Flux container sends it to views.
