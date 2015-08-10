@@ -26,6 +26,8 @@ var App = connect(mapStateToProps)(App)
 
 Adding __freeze__ will call `Object.freeze` in development
 
+`npm install --save icedam`
+
 ```
 import {makeFreezer} from 'icedam';
 var freeze = makeFreezer();
