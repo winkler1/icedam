@@ -27,7 +27,7 @@ var App = connect(mapStateToProps)(App)
 Adding __freeze__ will call `Object.freeze` in development
 
 ```
-import makeFreezer from "./freezer";
+import {makeFreezer} from 'icedam';
 var freeze = makeFreezer();
 
 function mapStateToProps(state)  {
