@@ -5,7 +5,7 @@ Friends don't let friends mutate.
  
 ![](IceDam.gif)
 
-![Screencast](https://www.youtube.com/watch?v=fPA_u4_iyK8)
+[Screencast](https://www.youtube.com/watch?v=fPA_u4_iyK8)
 
 ### What's This?
 
