@@ -2,10 +2,6 @@
 ![](http://c1.staticflickr.com/3/2576/4197921511_bde31964d3_m.jpg)
 
 Friends don't let friends mutate.
- 
-![](IceDam.gif)
-
-[Screencast](https://www.youtube.com/watch?v=fPA_u4_iyK8)
 
 ### What's This?
 
@@ -42,6 +38,12 @@ function mapStateToProps(state)  {
 
 var App = connect(mapStateToProps)(App)
 ```
+
+### Demos
+ 
+![](IceDam.gif)
+
+[Screencast](https://www.youtube.com/watch?v=fPA_u4_iyK8)
 
 ### What about ImmutableJS?
 
