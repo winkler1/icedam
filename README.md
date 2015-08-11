@@ -47,15 +47,17 @@ var App = connect(mapStateToProps)(App)
 
 [Screencast](https://www.youtube.com/watch?v=fPA_u4_iyK8)
 
-### What about ImmutableJS?
+### What about an library for immutability?
 
-Sure, you could use a full-blown immutable library. Downsides: you have to use its APIs, which are often awkward.
+Using an immutable library means commiting to using it throughout your stack. You'll have to change coding style, teach all your developers, and call `toJS()` when passing data. If your only concern is preventing views from mutating data, that might be too much.
 
 ### What about speed?
 
-In production: Nothing. No freezing.
+In production: No cost. No freezing.
 
 In dev (`process.env.NODE_ENV === 'development'`): when data structures change, cloning has a slight cost, usually well under a millisecond.
+
+IceDam only clones objects when they have changed (!shallowEqual).
 
 
 
