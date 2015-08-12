@@ -1,6 +1,6 @@
 {
   "name": "icedam",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Freezes data in development -- typically for Flux->React",
   "main": "lib/index.js",
   "scripts": {
