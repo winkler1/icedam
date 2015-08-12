@@ -1,15 +1,19 @@
-import shallowEqual from 'react-pure-render/shallowEqual';
+var deepFreeze, shallowEqual;
 
-function deepFreeze(obj) {
-  var propNames = Object.getOwnPropertyNames(obj);
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+  shallowEqual = require('react-pure-render/shallowEqual');
 
-  propNames.forEach(function (name) {
-    var prop = obj[name];
-    if (typeof prop === 'object' && !Object.isFrozen(prop)) {
-      deepFreeze(prop);
-    }
-  });
-  Object.freeze(obj);
+  deepFreeze = function (obj) {
+    var propNames = Object.keys(obj);
+
+    propNames.forEach(function (name) {
+      var prop = obj[name];
+      if (prop !== null && typeof prop === 'object' && !Object.isFrozen(prop)) {
+        deepFreeze(prop);
+      }
+    });
+    Object.freeze(obj);
+  };
 }
 
 // Make a freezer function that will cache its last results.
@@ -17,8 +21,8 @@ function deepFreeze(obj) {
 /*eslint no-console:0*/
 export function makeFreezer() {
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
-    var lastObj,
-      lastFrozen,
+    var lastInput,
+      lastOutput,
       name = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0],
       totalSerializeTime = 0;
   }
@@ -28,21 +32,21 @@ export function makeFreezer() {
       var logActions = false;
       var logger = logActions ? console.log : (() => {});
 
-      if (shallowEqual(lastObj, obj)) {
+      if (shallowEqual(lastInput, obj)) {
         logger(`+1 cached ${name}`);
-        return lastFrozen;
+        return lastOutput;
       }
-      lastObj = obj;
+      lastInput = obj;
 
       // Clone and deep freeze the object.
       var startTime = new Date();
-      lastFrozen = JSON.parse(JSON.stringify(obj));
+      lastOutput = JSON.parse(JSON.stringify(obj));
       var elapsed = new Date().getTime() - startTime.getTime();
       logger(`FREEZE ${name}: freezing took ${elapsed}`);
       totalSerializeTime += elapsed;
-      deepFreeze(lastFrozen);
+      deepFreeze(lastOutput);
 
-      return lastFrozen;
+      return lastOutput;
     }
     return obj;
   };
